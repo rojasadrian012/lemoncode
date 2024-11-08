@@ -1,0 +1,52 @@
+$red: #f44336;
+$blue: #3f51b5;
+$green: #4caf50;
+
+$text-color: rgb(0, 134, 134);
+
+$i: 1;
+
+@each $color in ($red, $blue, $green) {
+  .container-#{$i} {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr) 2fr repeat(4, 1fr);
+    // grid-template-rows: repeat(3, 1fr);
+    gap: 5px;
+
+    .box {
+      border: 1px solid transparent;
+      border-radius: 5px;
+      background-color: $color;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding-top: 20px;
+      padding-bottom: 20px;
+    }
+
+    .base-color {
+      color: white;
+    }
+
+    @for $i from 1 through 4 {
+      .darken-#{$i} {
+        background-color: darken($color, $i * 5%);
+        .color-box-text {
+          color: lighten($text-color, $i * 5%);
+        }
+      }
+      .lighten-#{$i} {
+        background-color: lighten($color, $i * 5%);
+        .color-box-text {
+          color: darken($text-color, $i * 5%);
+        }
+      }
+    }
+  }
+
+  $i: $i + 1;
+}
+
+[class^="container-"] {
+  margin-bottom: 5px;
+}

@@ -1,0 +1,29 @@
+body {
+  padding: 0;
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  display: flex;
+
+  .box {
+    background-color: #006a7b;
+    flex-grow: 1;
+    padding: 1rem 2rem;
+    text-align: center;
+    color: black;
+    text-decoration: none;
+
+    &:hover,
+    &:focus {
+      background-color: #2f4858;
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .container {
+    flex-direction: column;
+  }
+}
