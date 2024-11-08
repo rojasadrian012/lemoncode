@@ -1,5 +1,7 @@
 # Ejercicios Basicos
 
+Ejecutar `npm run dev` y desplazarse con el menú.
+
 ## Ejercicio 1
 
 Se uso `lighten` y `darken`.
