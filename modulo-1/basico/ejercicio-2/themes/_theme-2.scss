@@ -1,3 +1,5 @@
+@import "../mixins";
+
 $base: #0000ff;
 $important: #000066;
 $warning: #00ffff;
@@ -13,3 +15,5 @@ $secondary-font: "Georgia", serif;
 @mixin shadow {
   box-shadow: 20px 20px 20px 1px black;
 }
+
+@include menu-styles;

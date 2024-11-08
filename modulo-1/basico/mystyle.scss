@@ -1,0 +1,14 @@
+@import "mixins";
+
+@include menu-styles;
+
+body {
+  padding: 0;
+  margin: 0;
+}
+
+h1 {
+  font-family: "Verdana", sans-serif;
+  text-align: center;
+  margin-top: 40vh;
+}

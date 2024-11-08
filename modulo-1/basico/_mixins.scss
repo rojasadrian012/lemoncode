@@ -1,0 +1,18 @@
+@mixin menu-styles {
+  .options {
+    display: flex;
+    justify-content: space-around;
+    padding: 15px 5px;
+    font-family: "Verdana", sans-serif;
+
+    a:hover {
+      color: blue;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .options {
+      flex-direction: column;
+    }
+  }
+}
