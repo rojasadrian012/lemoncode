@@ -1,0 +1,25 @@
+$lemon-color: #d9d900;
+
+body {
+  margin: 0;
+  padding: 0;
+
+  main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+
+    img {
+      width: 200px;
+    }
+
+    h1 {
+      color: $lemon-color;
+      font-family: "Courier New", Courier, monospace;
+      font-size: 50px;
+      margin: 0;
+    }
+  }
+}
