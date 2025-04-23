@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useMembersContext } from "./providers";
+import { useMembersContext } from "../providers";
 
 interface MemberEntity {
   id: string;

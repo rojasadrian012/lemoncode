@@ -1,9 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { LoginPage } from "./login";
-import { ListPage } from "./list";
-import { DetailPage } from "./detail";
 import { MembersProvider } from "./providers";
+import { DetailPage, ListPage, LoginPage } from "./pages";
 
 export const App = () => {
   return (
