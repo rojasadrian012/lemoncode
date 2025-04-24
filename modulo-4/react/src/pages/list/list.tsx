@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useMembersContext } from "../../providers";
 import { Box, Input, Pagination, Typography } from "@mui/material";
 import styles from "./list.module.css";
-import { Header } from './components/header';
+import { Header } from '../../components/header';
 
 interface MemberEntity {
   id: string;
@@ -12,7 +12,7 @@ interface MemberEntity {
 }
 
 export const ListPage: React.FC = () => {
-  const { members, setSlug, setPagination, totalPagination } = useMembersContext()
+  const { members, setSlug, setPagination, totalPagination, pagination } = useMembersContext()
   const updatePage = (page: number) => {
     setPagination((prev) => ({
       ...prev,
@@ -58,6 +58,7 @@ export const ListPage: React.FC = () => {
             }}
             count={totalPagination.totalCount}
             defaultPage={totalPagination.halfTotal}
+            page={pagination.page}
             boundaryCount={2}
             onChange={(e, value) => updatePage(value)}
           />

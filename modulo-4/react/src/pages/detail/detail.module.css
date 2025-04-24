@@ -1,0 +1,31 @@
+.imageContainer {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.imageContainer > img {
+  width: 250px;
+  border-radius: 5px;
+}
+
+.infoContainer {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.infoContainer > div > p {
+  margin: 0 0 1rem 0;
+}
+
+.infoContainer > div > p > span {
+  font-weight: bolder;
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}

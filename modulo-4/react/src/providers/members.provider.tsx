@@ -4,7 +4,8 @@ import { defaultPagination, MemberEntity, Pagination, TotalPagination } from "./
 interface MembersContextModel {
     members: MemberEntity[];
     setSlug: (slug: string) => void;
-    setPagination: React.Dispatch<React.SetStateAction<Pagination>>
+    setPagination: React.Dispatch<React.SetStateAction<Pagination>>;
+    pagination: Pagination;
     totalPagination: TotalPagination
 }
 
@@ -53,6 +54,7 @@ export const MembersProvider: React.FC<React.PropsWithChildren> = ({ children })
                 members,
                 setSlug,
                 setPagination,
+                pagination,
                 totalPagination,
             }}
         >
