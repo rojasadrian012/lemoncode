@@ -1,5 +1,7 @@
 export const routes = {
   login: "/",
-  gitHubList: "github/list",
-  gitHubDetail: "github/detail/:id",
+  gitHubMembersList: "github/list",
+  gitHubMemberDetail: "github/detail/:id",
+  rickAndMortyCharacterList: "rick-and-morty/list",
+  rickAndMortyCharacterDetail: "rick-and-morty/detail/:id",
 };
