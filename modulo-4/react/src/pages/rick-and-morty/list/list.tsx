@@ -1,18 +1,15 @@
 import { Typography, Input, Pagination } from "@mui/material";
-import React, { PropsWithChildren } from "react";
-import { Link, generatePath } from "react-router-dom";
+import React from "react";
+import { generatePath, Link } from "react-router-dom";
 import { Header } from "../../../components/header";
-import { routes } from "../../../routes";
 import styles from "./list.module.css";
-import { Characters, defaulCharacters } from "../../../providers/character/interfaces/characters.model";
 import { useCharactersContext } from "../../../providers/character";
-
-
+import { routes } from "../../../routes";
 
 export const CharactersListPage: React.FC = () => {
 
-    const { characters, setPagination, pagination, setNameCharacter } = useCharactersContext(); 
-    
+    const { characters, setPagination, pagination, setNameCharacter } = useCharactersContext();
+
     return (
         <>
             <Typography component="h1" variant="h4" align="center">
@@ -21,10 +18,10 @@ export const CharactersListPage: React.FC = () => {
             <div className={styles.centerContent}>
                 <Input
                     type="text"
-                    placeholder="Rick and Morty"
-                      onChange={(e) =>
+                    placeholder="Rick Sanchez"
+                    onChange={(e) =>
                         setNameCharacter(e.target.value)
-                      }
+                    }
                     className={styles.input}
                 />
             </div>
@@ -43,7 +40,7 @@ export const CharactersListPage: React.FC = () => {
                         <span>{character.name}</span>
                         <span>{character.species}</span>
                         <span>{character.status}</span>
-                        <a href={character.url} target="_blank">{character.url}</a>
+                        <Link to={generatePath(`/${routes.rickAndMortyCharacterDetail}`, { id: character.id })}>{character.url}</Link>
                     </React.Fragment>
                 ))}
             </div>

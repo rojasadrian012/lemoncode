@@ -7,10 +7,8 @@ import { MembersListPage } from "./pages/github/list/list";
 import { LoginPage } from "./pages/login/login";
 import { routes } from "./routes";
 import { AppLayout } from "./layouts/app.layout";
-import { CharactersListPage } from "./pages/rick-and-morty/list/list";
-import { CharacterDetailPage } from "./pages/rick-and-morty/detail/detail";
 import { CharacterProvider } from "./providers/character";
-
+import { CharacterDetailPage, CharactersListPage } from "./pages/rick-and-morty";
 
 export const App = () => {
   return (

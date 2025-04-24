@@ -9,9 +9,10 @@ export const AppLayout: React.FC<React.PropsWithChildren> = ({ children }) => {
     const location = useLocation()
 
     React.useEffect(() => {
-        if (location.pathname === `/${routes.rickAndMortyCharacterList}` ||
-            location.pathname === `/${routes.rickAndMortyCharacterDetail}`) {
+        if (location.pathname.includes("rick-and-morty")) {
             setValue(1);
+        }else{
+            setValue(0);
         }
     }, [])
 
@@ -32,7 +33,7 @@ export const AppLayout: React.FC<React.PropsWithChildren> = ({ children }) => {
                 value={value}
                 onChange={handleNavigationChange}
             >
-                <BottomNavigationAction label="GitHub" />
+                <BottomNavigationAction label="GitHub Miembros" />
                 <BottomNavigationAction label="Rick And Morty" />
             </BottomNavigation>
             {children}
