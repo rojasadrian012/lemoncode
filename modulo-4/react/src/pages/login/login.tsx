@@ -13,7 +13,7 @@ export const LoginPage: React.FC = () => {
     e.preventDefault();
 
     if (username === "admin" && password === "test") {
-      navigate(routes.gitHubList);
+      navigate(routes.gitHubMembersList);
     } else {
       alert("User / password not valid, psst... admin / test");
     }
