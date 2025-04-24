@@ -62,7 +62,7 @@ export const CharacterDetailPage: React.FC = () => {
         </div>
 
         <div className={styles.footer}>
-          <Link to={`/${routes.gitHubMembersList}`}>Volver al inicio</Link>
+          <Link to={`/${routes.rickAndMortyCharacterList}`}>Volver al inicio</Link>
         </div>
       </>
     )

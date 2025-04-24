@@ -10,7 +10,7 @@ import { routes } from "../../../routes";
 
 export const CharactersListPage: React.FC = () => {
 
-    const { characters, setPagination, pagination, setNameCharacter } = useCharactersContext();
+    const { characters, setPagination, pagination, setNameCharacter, nameCharacter } = useCharactersContext();
 
     return (
         <>
@@ -20,6 +20,7 @@ export const CharactersListPage: React.FC = () => {
             <div className={styles.centerContent}>
                 <Input
                     type="text"
+                    value={nameCharacter}
                     placeholder="Rick Sanchez"
                     onChange={(e) =>
                         setNameCharacter(e.target.value)

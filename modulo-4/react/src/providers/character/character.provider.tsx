@@ -10,6 +10,7 @@ interface CharactersContextModel {
     pagination: Pagination;
     setPagination: React.Dispatch<React.SetStateAction<Pagination>>;
     setNameCharacter: React.Dispatch<React.SetStateAction<string>>;
+    nameCharacter: string;
 }
 
 export const CharactersContext = React.createContext<CharactersContextModel>(null);
@@ -40,6 +41,7 @@ export const CharacterProvider: React.FC<React.PropsWithChildren> = ({ children 
                 setPagination,
                 pagination,
                 setNameCharacter,
+                nameCharacter,
             }}
         >
             {children}
