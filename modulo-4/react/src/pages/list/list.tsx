@@ -24,7 +24,7 @@ export const ListPage: React.FC = () => {
   return (
     <>
       <Typography component="h1" variant="h4" align="center">
-        Lista de usuarios Github
+        Lista de usuarios <Typography component="span" variant="h4" color="primary">GitHub</Typography>
       </Typography>
       <div className={styles.centerContent}>
         <Input
