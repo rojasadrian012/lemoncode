@@ -1,19 +1,24 @@
 .listUserListContainer {
   display: grid;
-  grid-template-columns: 80px 1fr 1fr 2fr;
+  grid-template-columns: 80px 1fr 1fr 1fr 1fr 250px;
   grid-template-rows: 1fr;
   grid-auto-rows: 80px;
   grid-gap: 9px 5px;
   max-width: 900px;
   margin: 0 auto;
+  overflow: scroll;
   max-height: 500px;
+  overflow-x: hidden;
 }
 
 .listUserListContainer > *:not(div) {
   border: 1px solid grey;
   border-radius: 5px;
   line-height: 80px;
-  padding-left: 1rem;
+  padding: 0 1rem;
+  white-space: nowrap;
+  overflow: hidden; 
+  text-overflow: ellipsis
 }
 
 .listUserListContainer > img {

@@ -1,5 +1,5 @@
 import React from "react";
-import { defaultPagination, MemberEntity, Pagination, TotalPagination } from "./member.model";
+import { defaultPagination, MemberEntity, Pagination } from "./member.model";
 
 interface MembersContextModel {
     members: MemberEntity[];
@@ -35,7 +35,7 @@ export const MembersProvider: React.FC<React.PropsWithChildren> = ({ children })
 
                     setPagination(prevState => {
                         if (prevState.totalCount === newTotalCount) {
-                            return prevState; // No actualizar si el valor no ha cambiado
+                            return prevState;
                         }
                         return {
                             ...prevState,
@@ -57,6 +57,8 @@ export const MembersProvider: React.FC<React.PropsWithChildren> = ({ children })
         return () => {
             clearTimeout(timeoutId);
         };
+        console.log(pagination);
+        
     }, [slug, pagination.page, pagination.limit]);
 
     return (
