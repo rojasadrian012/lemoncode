@@ -4,15 +4,16 @@ import { MembersProvider } from "./providers";
 import { DetailPage } from "./pages/detail/detail";
 import { ListPage } from "./pages/list/list";
 import { LoginPage } from "./pages/login/login";
+import { routes } from "./routes";
 
 export const App = () => {
   return (
     <MembersProvider>
       <Router>
         <Routes>
-          <Route path="/" element={<LoginPage />} />
-          <Route path="/list" element={<ListPage />} />
-          <Route path="/detail/:id" element={<DetailPage />} />
+          <Route path={routes.login}element={<LoginPage />} />
+          <Route path={routes.gitHubList}element={<ListPage />} />
+          <Route path={routes.gitHubDetail}element={<DetailPage />} />
         </Routes>
       </Router>
     </MembersProvider>

@@ -1,9 +1,10 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { generatePath, Link } from "react-router-dom";
 import { useMembersContext } from "../../providers";
 import { Box, Input, Pagination, Typography } from "@mui/material";
 import styles from "./list.module.css";
 import { Header } from '../../components/header';
+import { routes } from "../../routes";
 
 interface MemberEntity {
   id: string;
@@ -45,7 +46,7 @@ export const ListPage: React.FC = () => {
           <React.Fragment key={member.id}>
             <img src={member.avatar_url} />
             <span>{member.id}</span>
-            <Link to={`/detail/${member.login}`}>{member.login}</Link>
+            <Link to={`/${generatePath(routes.gitHubDetail, { id: member.login })}`}>{member.login}</Link>
             <a href={member.html_url} target="_blank">{member.html_url}</a>
           </React.Fragment>
         ))}

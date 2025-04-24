@@ -2,6 +2,7 @@ import { Button, Card, FormLabel, TextField, Typography } from "@mui/material";
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import styles from "./login.module.css";
+import { routes } from "../../routes";
 
 export const LoginPage: React.FC = () => {
   const navigate = useNavigate();
@@ -12,7 +13,7 @@ export const LoginPage: React.FC = () => {
     e.preventDefault();
 
     if (username === "admin" && password === "test") {
-      navigate("/list");
+      navigate(routes.gitHubList);
     } else {
       alert("User / password not valid, psst... admin / test");
     }

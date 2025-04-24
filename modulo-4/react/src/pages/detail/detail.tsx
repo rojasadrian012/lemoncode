@@ -3,6 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import { defaultMember, Member } from "./interfaces/member.model";
 import { Typography } from "@mui/material";
 import styles from "./detail.module.css";
+import { routes } from "../../routes";
 
 
 export const DetailPage: React.FC = () => {
@@ -53,7 +54,7 @@ export const DetailPage: React.FC = () => {
       </div>
 
       <div className={styles.footer}>
-        <Link to="/list">Volver al inicio</Link>
+        <Link to={`/${routes.gitHubList}`}>Volver al inicio</Link>
       </div>
     </>
   );
