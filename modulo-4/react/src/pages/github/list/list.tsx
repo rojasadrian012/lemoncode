@@ -7,7 +7,7 @@ import { Header } from '../../../components/header';
 import { routes } from "../../../routes";
 
 export const MembersListPage: React.FC = () => {
-  const { members, setSlug, setPagination, pagination } = useMembersContext()
+  const { members, slug, setSlug, setPagination, pagination } = useMembersContext()
   const updatePage = (page: number) => {
     setPagination((prev) => ({
       ...prev,
@@ -24,6 +24,7 @@ export const MembersListPage: React.FC = () => {
         <Input
           type="text"
           placeholder="lemoncode"
+          value={ slug ==="lemoncode" ? "" : slug }
           onChange={(e) =>
             setSlug(e.target.value == "" ? "lemoncode" : e.target.value)
           }

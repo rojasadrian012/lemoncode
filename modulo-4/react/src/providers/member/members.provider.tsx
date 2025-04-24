@@ -1,8 +1,10 @@
 import React from "react";
 import { defaultPagination, MemberEntity, Pagination } from "./member.model";
+import { useDebounce } from "use-debounce";
 
 interface MembersContextModel {
     members: MemberEntity[];
+    slug: string;
     setSlug: (slug: string) => void;
     setPagination: React.Dispatch<React.SetStateAction<Pagination>>;
     pagination: Pagination;
@@ -14,10 +16,9 @@ export const MembersProvider: React.FC<React.PropsWithChildren> = ({ children })
     const [members, setMembers] = React.useState<MemberEntity[]>([]);
     const [slug, setSlug] = React.useState<string>("lemoncode");
     const [pagination, setPagination] = React.useState<Pagination>(defaultPagination)
+    const [debouncedText] = useDebounce(slug, 1500);
 
     React.useEffect(() => {
-        let timeoutId;
-
         const fetchMembers = async () => {
             const url = `https://api.github.com/orgs/${slug}/members?per_page=${pagination.limit}&page=${pagination.page}`;
             const response = await fetch(url);
@@ -52,14 +53,9 @@ export const MembersProvider: React.FC<React.PropsWithChildren> = ({ children })
             }
         };
 
-        timeoutId = setTimeout(fetchMembers, 2000);
+        fetchMembers()
 
-        return () => {
-            clearTimeout(timeoutId);
-        };
-        console.log(pagination);
-        
-    }, [slug, pagination.page, pagination.limit]);
+    }, [debouncedText, pagination.page, pagination.limit]);
 
     return (
         <MembersContext.Provider
@@ -68,6 +64,7 @@ export const MembersProvider: React.FC<React.PropsWithChildren> = ({ children })
                 setSlug,
                 setPagination,
                 pagination,
+                slug,
             }}
         >
             {children}
