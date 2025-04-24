@@ -1,9 +1,11 @@
 import React from "react";
 import { Link, useParams } from "react-router-dom";
-import { defaultMember, Member } from "./interfaces/member.model";
+
 import { Typography } from "@mui/material";
+
 import styles from "./detail.module.css";
 import { routes } from "../../../routes";
+import { defaultMember, Member } from "./interfaces";
 
 
 export const MemberDetailPage: React.FC = () => {

@@ -1,6 +1,6 @@
 import React from "react";
 import { generatePath, Link } from "react-router-dom";
-import { useMembersContext } from "../../../providers";
+import { useMembersContext } from "../../../providers/member";
 import { Box, Input, Pagination, Typography } from "@mui/material";
 import styles from "./list.module.css";
 import { Header } from '../../../components/header';
