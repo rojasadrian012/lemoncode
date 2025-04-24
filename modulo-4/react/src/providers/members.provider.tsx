@@ -6,7 +6,6 @@ interface MembersContextModel {
     setSlug: (slug: string) => void;
     setPagination: React.Dispatch<React.SetStateAction<Pagination>>;
     pagination: Pagination;
-    totalPagination: TotalPagination
 }
 
 export const MembersContext = React.createContext<MembersContextModel>(null);
@@ -15,7 +14,6 @@ export const MembersProvider: React.FC<React.PropsWithChildren> = ({ children })
     const [members, setMembers] = React.useState<MemberEntity[]>([]);
     const [slug, setSlug] = React.useState<string>("lemoncode");
     const [pagination, setPagination] = React.useState<Pagination>(defaultPagination)
-    const [totalPagination, setTotalPagination] = React.useState<TotalPagination>({ halfTotal: 0, totalCount: 0 });
 
     React.useEffect(() => {
         const fetchMembers = async () => {
@@ -31,16 +29,16 @@ export const MembersProvider: React.FC<React.PropsWithChildren> = ({ children })
                 if (match) {
                     const lastPage = parseInt(match[1], 10);
                     const total = lastPage * pagination.limit
-                    setTotalPagination({
+                    setPagination((prevState) => ({
+                        ...prevState,
                         totalCount: total / pagination.limit,
-                        halfTotal: Math.floor((total / pagination.limit) / 2),
-                    });
+                    }));
                 }
             } else {
-                setTotalPagination({
+                setPagination((prevState) => ({
+                    ...prevState,
                     totalCount: 0,
-                    halfTotal: 0,
-                })
+                }))
             }
         };
         setTimeout(() => { //Debounce
@@ -55,7 +53,6 @@ export const MembersProvider: React.FC<React.PropsWithChildren> = ({ children })
                 setSlug,
                 setPagination,
                 pagination,
-                totalPagination,
             }}
         >
             {children}

@@ -6,14 +6,8 @@ import styles from "./list.module.css";
 import { Header } from '../../components/header';
 import { routes } from "../../routes";
 
-interface MemberEntity {
-  id: string;
-  login: string;
-  avatar_url: string;
-}
-
 export const ListPage: React.FC = () => {
-  const { members, setSlug, setPagination, totalPagination, pagination } = useMembersContext()
+  const { members, setSlug, setPagination, pagination } = useMembersContext()
   const updatePage = (page: number) => {
     setPagination((prev) => ({
       ...prev,
@@ -52,18 +46,16 @@ export const ListPage: React.FC = () => {
         ))}
       </div>
       <div className={styles.centerContent}>
-        {totalPagination.halfTotal !== 0 && (
-          <Pagination
-            sx={{
-              marginTop: 2,
-            }}
-            count={totalPagination.totalCount}
-            page={pagination.page}
-            onChange={(e, value) => updatePage(value)}
-            boundaryCount={2}
-            siblingCount={pagination.page < 4 ? 0 : 3}
-          />
-        )}
+        <Pagination
+          sx={{
+            marginTop: 2,
+          }}
+          count={pagination.totalCount}
+          page={pagination.page}
+          onChange={(e, value) => updatePage(value)}
+          boundaryCount={2}
+          siblingCount={pagination.page < 4 ? 0 : 3}
+        />
       </div>
     </>
   );
