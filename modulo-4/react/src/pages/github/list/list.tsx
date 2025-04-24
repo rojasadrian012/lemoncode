@@ -1,7 +1,7 @@
 import React from "react";
 import { generatePath, Link } from "react-router-dom";
 import { useMembersContext } from "../../../providers/member";
-import { Box, Input, Pagination, Typography } from "@mui/material";
+import { Box, Chip, Input, Pagination, Typography } from "@mui/material";
 import styles from "./list.module.css";
 import { Header } from '../../../components/header';
 import { routes } from "../../../routes";
@@ -30,6 +30,7 @@ export const MembersListPage: React.FC = () => {
           }
           className={styles.input}
         />
+        <Chip label={`${pagination.count} resultados`} color="primary" variant="outlined" />
       </div>
       <div className={styles.listUserListContainer}>
         <Header title="Foto" />
@@ -51,7 +52,7 @@ export const MembersListPage: React.FC = () => {
           sx={{
             marginTop: 2,
           }}
-          count={pagination.totalCount}
+          count={pagination.totalPages}
           page={pagination.page}
           onChange={(e, value) => updatePage(value)}
           boundaryCount={2}

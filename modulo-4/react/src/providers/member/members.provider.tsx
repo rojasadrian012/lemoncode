@@ -35,19 +35,20 @@ export const MembersProvider: React.FC<React.PropsWithChildren> = ({ children })
                     const newTotalCount = total / pagination.limit;
 
                     setPagination(prevState => {
-                        if (prevState.totalCount === newTotalCount) {
+                        if (prevState.totalPages === newTotalCount) {
                             return prevState;
                         }
                         return {
                             ...prevState,
-                            totalCount: newTotalCount,
+                            totalPages: newTotalCount,
+                            count: total,
                         };
                     });
                 }
             } else {
                 setPagination(prevState => ({
                     ...prevState,
-                    totalCount: 0,
+                    totalPages: 0,
                 })
                 )
             }

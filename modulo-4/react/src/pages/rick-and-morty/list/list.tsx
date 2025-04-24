@@ -1,17 +1,19 @@
 import React from "react";
 import { generatePath, Link } from "react-router-dom";
 
-import { Typography, Input, Pagination } from "@mui/material";
+import { Typography, Input, Pagination, Chip } from "@mui/material";
 
-import { Header } from "../../../components/header";
-import styles from "./list.module.css";
-import { useCharactersContext } from "../../../providers/character";
 import { routes } from "../../../routes";
+import { useCharactersContext } from "../../../providers";
+import { Header } from "../../../components";
+import styles from "./list.module.css";
 
 export const CharactersListPage: React.FC = () => {
 
     const { characters, setPagination, pagination, setNameCharacter, nameCharacter } = useCharactersContext();
 
+    console.log(characters);
+    
     return (
         <>
             <Typography component="h1" variant="h4" align="center">
@@ -27,6 +29,8 @@ export const CharactersListPage: React.FC = () => {
                     }
                     className={styles.input}
                 />
+                
+                <Chip label={`${characters.info.count} resultados`} color="primary" variant="outlined" />
             </div>
             <div className={styles.listUserListContainer}>
                 <Header title="Foto" />

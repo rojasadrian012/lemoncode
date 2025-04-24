@@ -8,11 +8,13 @@ export interface MemberEntity {
 export interface Pagination {
   limit: number;
   page: number;
-  totalCount: number;
+  totalPages: number;
+  count: number;
 }
 
 export const defaultPagination: Pagination = {
   limit: 5,
   page: 1,
-  totalCount: 0,
+  totalPages: 0,
+  count: 0,
 };
