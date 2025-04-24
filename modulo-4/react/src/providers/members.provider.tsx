@@ -16,6 +16,8 @@ export const MembersProvider: React.FC<React.PropsWithChildren> = ({ children })
     const [pagination, setPagination] = React.useState<Pagination>(defaultPagination)
 
     React.useEffect(() => {
+        let timeoutId;
+
         const fetchMembers = async () => {
             const url = `https://api.github.com/orgs/${slug}/members?per_page=${pagination.limit}&page=${pagination.page}`;
             const response = await fetch(url);
@@ -28,23 +30,34 @@ export const MembersProvider: React.FC<React.PropsWithChildren> = ({ children })
                 const match = linkHeader.match(/&page=(\d+)>; rel="last"/);
                 if (match) {
                     const lastPage = parseInt(match[1], 10);
-                    const total = lastPage * pagination.limit
-                    setPagination((prevState) => ({
-                        ...prevState,
-                        totalCount: total / pagination.limit,
-                    }));
+                    const total = lastPage * pagination.limit;
+                    const newTotalCount = total / pagination.limit;
+
+                    setPagination(prevState => {
+                        if (prevState.totalCount === newTotalCount) {
+                            return prevState; // No actualizar si el valor no ha cambiado
+                        }
+                        return {
+                            ...prevState,
+                            totalCount: newTotalCount,
+                        };
+                    });
                 }
             } else {
-                setPagination((prevState) => ({
+                setPagination(prevState => ({
                     ...prevState,
                     totalCount: 0,
-                }))
+                })
+                )
             }
         };
-        setTimeout(() => { //Debounce
-            fetchMembers();
-        }, 2000);
-    }, [slug, pagination]);
+
+        timeoutId = setTimeout(fetchMembers, 2000);
+
+        return () => {
+            clearTimeout(timeoutId);
+        };
+    }, [slug, pagination.page, pagination.limit]);
 
     return (
         <MembersContext.Provider
