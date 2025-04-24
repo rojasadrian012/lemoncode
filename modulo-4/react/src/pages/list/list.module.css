@@ -6,23 +6,16 @@
   grid-gap: 10px 5px;
 }
 
+.listUserListContainer > *:not(div) {
+  border: 1px solid grey;
+  border-radius: 5px;
+  line-height: 80px;
+  padding-left: 1rem;
+}
+
 .listUserListContainer > img {
   width: 80px;
-  border-radius: 5px;
-}
-
-.listUserListContainer > span {
-  border: 1px solid grey;
-  border-radius: 5px;
-  line-height: 80px;
-  padding-left: 1rem;
-}
-
-.listUserListContainer > a {
-  border: 1px solid grey;
-  border-radius: 5px;
-  line-height: 80px;
-  padding-left: 1rem;
+  padding: 0;
 }
 
 .centerContent {
@@ -31,13 +24,13 @@
   align-items: center;
 }
 
-.input{
+.input {
   margin-top: 1.5rem;
   margin-bottom: 1.5rem;
   max-width: 450px;
   width: 100%;
 }
 
-.cell{
+.cell {
   border: 1px solid #ccc;
 }
