@@ -2,6 +2,7 @@ import React from "react";
 
 import { Characters, defaulCharacters, defaultPagination, Pagination } from "./interfaces";
 import { getCharactersByPage } from "./api";
+import { useDebounce } from "use-debounce";
 
 
 interface CharactersContextModel {
@@ -18,9 +19,10 @@ export const CharacterProvider: React.FC<React.PropsWithChildren> = ({ children 
     const [characters, setCharacters] = React.useState<Characters>(defaulCharacters);
     const [pagination, setPagination] = React.useState<Pagination>(defaultPagination)
     const [nameCharacter, setNameCharacter] = React.useState<string>("");
+    const [debouncedText] = useDebounce(nameCharacter, 1000);
 
     React.useEffect(() => {
-        getCharactersByPage(pagination.page, nameCharacter)
+        getCharactersByPage(pagination.page, debouncedText)
             .then(response => {
                 if (!Array.isArray(response.results)) {
                     setCharacters(defaulCharacters);
@@ -29,7 +31,7 @@ export const CharacterProvider: React.FC<React.PropsWithChildren> = ({ children 
                 setCharacters(response)
             }
             )
-    }, [pagination, nameCharacter]);
+    }, [pagination, debouncedText]);
 
     return (
         <CharactersContext.Provider

@@ -1,6 +1,8 @@
-import { Typography, Input, Pagination } from "@mui/material";
 import React from "react";
 import { generatePath, Link } from "react-router-dom";
+
+import { Typography, Input, Pagination } from "@mui/material";
+
 import { Header } from "../../../components/header";
 import styles from "./list.module.css";
 import { useCharactersContext } from "../../../providers/character";
