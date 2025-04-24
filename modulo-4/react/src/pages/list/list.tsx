@@ -1,0 +1,61 @@
+import React from "react";
+import { Link } from "react-router-dom";
+import { useMembersContext } from "../../providers";
+import { Box, Input, Pagination, Typography } from "@mui/material";
+import styles from "./list.module.css";
+import { Header } from './components/header';
+
+interface MemberEntity {
+  id: string;
+  login: string;
+  avatar_url: string;
+}
+
+export const ListPage: React.FC = () => {
+  const { members, setSlug, totalPagination } = useMembersContext()
+
+  console.log(members);
+
+  return (
+    <>
+      <Typography component="h1" variant="h4" align="center">
+        Lista de usuarios Github
+      </Typography>
+      <div className={styles.centerContent}>
+        <Input
+          type="text"
+          placeholder="lemoncode"
+          onChange={(e) => setSlug(e.target.value)}
+          className={styles.input}
+        />
+      </div>
+      <div className={styles.listUserListContainer}>
+        <Header title="Foto" />
+        <Header title="Identificador" />
+        <Header title="Nombre" />
+        <Header title="Perfil en Github" />
+
+        {members.map((member) => (
+          <React.Fragment key={member.id}>
+            <img src={member.avatar_url} />
+            <span>{member.id}</span>
+            <Link to={`/detail/${member.login}`}>{member.login}</Link>
+            <a href={member.html_url} target="_blank">{member.html_url}</a>
+          </React.Fragment>
+        ))}
+      </div>
+      <div className={styles.centerContent}>
+        {totalPagination.halfTotal !== 0 && (
+          <Pagination
+            sx={{
+              marginTop: 2
+            }}
+            count={totalPagination?.totalCount}
+            defaultPage={totalPagination?.halfTotal}
+            boundaryCount={2}
+          />
+        )}
+      </div>
+    </>
+  );
+};

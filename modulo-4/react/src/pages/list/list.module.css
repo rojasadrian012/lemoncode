@@ -1,0 +1,43 @@
+.listUserListContainer {
+  display: grid;
+  grid-template-columns: 80px 1fr 1fr 2fr;
+  grid-template-rows: 1fr;
+  grid-auto-rows: 80px;
+  grid-gap: 10px 5px;
+}
+
+.listUserListContainer > img {
+  width: 80px;
+  border-radius: 5px;
+}
+
+.listUserListContainer > span {
+  border: 1px solid grey;
+  border-radius: 5px;
+  line-height: 80px;
+  padding-left: 1rem;
+}
+
+.listUserListContainer > a {
+  border: 1px solid grey;
+  border-radius: 5px;
+  line-height: 80px;
+  padding-left: 1rem;
+}
+
+.centerContent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.input{
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+  max-width: 450px;
+  width: 100%;
+}
+
+.cell{
+  border: 1px solid #ccc;
+}

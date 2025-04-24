@@ -35,16 +35,24 @@ module.exports = {
         loader: "html-loader",
       },
       {
-        test: /\.css$/,
+        test: /\.module\.css$/,
         exclude: /node_modules/,
         use: [
-          {
-            loader: "style-loader",
-          },
+          "style-loader",
           {
             loader: "css-loader",
+            options: {
+              modules: {
+                localIdentName: "[name]__[local]___[hash:base64:5]",
+              },
+            },
           },
         ],
+      },
+      {
+        test: /\.css$/,
+        exclude: [/node_modules/, /\.module\.css$/],
+        use: ["style-loader", "css-loader"],
       },
     ],
   },
