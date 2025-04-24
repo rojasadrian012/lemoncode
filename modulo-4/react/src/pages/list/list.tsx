@@ -58,12 +58,11 @@ export const ListPage: React.FC = () => {
               marginTop: 2,
             }}
             count={totalPagination.totalCount}
-            defaultPage={totalPagination.halfTotal}
             page={pagination.page}
-            boundaryCount={2}
             onChange={(e, value) => updatePage(value)}
+            boundaryCount={2}
+            siblingCount={pagination.page < 4 ? 0 : 3}
           />
-
         )}
       </div>
     </>
