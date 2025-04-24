@@ -12,9 +12,13 @@ interface MemberEntity {
 }
 
 export const ListPage: React.FC = () => {
-  const { members, setSlug, totalPagination } = useMembersContext()
-
-  console.log(members);
+  const { members, setSlug, setPagination, totalPagination } = useMembersContext()
+  const updatePage = (page: number) => {
+    setPagination((prev) => ({
+      ...prev,
+      page: page,
+    }))
+  }
 
   return (
     <>
@@ -25,7 +29,9 @@ export const ListPage: React.FC = () => {
         <Input
           type="text"
           placeholder="lemoncode"
-          onChange={(e) => setSlug(e.target.value)}
+          onChange={(e) =>
+            setSlug(e.target.value == "" ? "lemoncode" : e.target.value)
+          }
           className={styles.input}
         />
       </div>
@@ -48,12 +54,14 @@ export const ListPage: React.FC = () => {
         {totalPagination.halfTotal !== 0 && (
           <Pagination
             sx={{
-              marginTop: 2
+              marginTop: 2,
             }}
-            count={totalPagination?.totalCount}
-            defaultPage={totalPagination?.halfTotal}
+            count={totalPagination.totalCount}
+            defaultPage={totalPagination.halfTotal}
             boundaryCount={2}
+            onChange={(e, value) => updatePage(value)}
           />
+
         )}
       </div>
     </>

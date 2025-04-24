@@ -4,7 +4,7 @@ import { defaultPagination, MemberEntity, Pagination, TotalPagination } from "./
 interface MembersContextModel {
     members: MemberEntity[];
     setSlug: (slug: string) => void;
-    setPagination: (pagination: Pagination) => void;
+    setPagination: React.Dispatch<React.SetStateAction<Pagination>>
     totalPagination: TotalPagination
 }
 
@@ -42,8 +42,9 @@ export const MembersProvider: React.FC<React.PropsWithChildren> = ({ children })
                 })
             }
         };
-
-        fetchMembers();
+        setTimeout(() => { //Debounce
+            fetchMembers();
+        }, 2000);
     }, [slug, pagination]);
 
     return (
