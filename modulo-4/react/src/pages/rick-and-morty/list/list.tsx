@@ -11,8 +11,8 @@ import { useCharactersContext } from "../../../providers/character";
 
 export const CharactersListPage: React.FC = () => {
 
-    const { characters, setPagination, pagination } = useCharactersContext(); 
-
+    const { characters, setPagination, pagination, setNameCharacter } = useCharactersContext(); 
+    
     return (
         <>
             <Typography component="h1" variant="h4" align="center">
@@ -22,9 +22,9 @@ export const CharactersListPage: React.FC = () => {
                 <Input
                     type="text"
                     placeholder="Rick and Morty"
-                    //   onChange={(e) =>
-                    //     setSlug(e.target.value == "" ? "lemoncode" : e.target.value)
-                    //   }
+                      onChange={(e) =>
+                        setNameCharacter(e.target.value)
+                      }
                     className={styles.input}
                 />
             </div>
@@ -53,7 +53,6 @@ export const CharactersListPage: React.FC = () => {
                         marginTop: 2,
                     }}
                     count={characters.info.pages}
-                    // page={characters.info.pages}
                     onChange={(e, value) => setPagination(prevState => ({
                         ...prevState,
                         page: value
