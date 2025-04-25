@@ -1,7 +1,7 @@
 import React from "react";
 import { generatePath, Link } from "react-router-dom";
 
-import { Typography, Input, Pagination, Chip } from "@mui/material";
+import { Typography, Input, Pagination, Chip, Skeleton } from "@mui/material";
 
 import { routes } from "../../../routes";
 import { useCharactersContext } from "../../../providers";
@@ -12,8 +12,6 @@ export const CharactersListPage: React.FC = () => {
 
     const { characters, setPagination, pagination, setNameCharacter, nameCharacter } = useCharactersContext();
 
-    console.log(characters);
-    
     return (
         <>
             <Typography component="h1" variant="h4" align="center">
@@ -29,7 +27,7 @@ export const CharactersListPage: React.FC = () => {
                     }
                     className={styles.input}
                 />
-                
+
                 <Chip label={`${characters.info.count} resultados`} color="primary" variant="outlined" />
             </div>
             <div className={styles.listUserListContainer}>
@@ -42,7 +40,17 @@ export const CharactersListPage: React.FC = () => {
 
                 {characters.results.map((character) => (
                     <React.Fragment key={character.id}>
-                        <img src={character.image} />
+                        {character.image
+                            ?
+                            <img src={character.image} />
+                            :
+                            <Skeleton
+                                variant="rectangular"
+                                width={80}
+                                height={80}
+                                style={{'padding': '0'}}
+                            />
+                        }
                         <span>{character.id}</span>
                         <span>{character.name}</span>
                         <span>{character.species}</span>

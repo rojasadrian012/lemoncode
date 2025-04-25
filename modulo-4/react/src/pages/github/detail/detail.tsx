@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, useParams } from "react-router-dom";
 
-import { Typography } from "@mui/material";
+import { Skeleton, Typography } from "@mui/material";
 
 import styles from "./detail.module.css";
 import { routes } from "../../../routes";
@@ -32,7 +32,12 @@ export const MemberDetailPage: React.FC = () => {
       </Typography>
 
       <div className={styles.imageContainer}>
-        <img src={member.avatar_url} alt={`foto de ${member.login}`} />
+        {member.avatar_url
+          ?
+          <img src={member.avatar_url} alt={`foto de ${member.login}`} />
+          :
+          <Skeleton variant="rectangular" width={250} height={250} sx={{ borderRadius: '5px' }} />
+        }
       </div>
       <div className={styles.infoContainer}>
         <div>

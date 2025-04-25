@@ -1,7 +1,7 @@
 import React from "react";
 import { generatePath, Link } from "react-router-dom";
 import { useMembersContext } from "../../../providers/member";
-import { Box, Chip, Input, Pagination, Typography } from "@mui/material";
+import { Box, Chip, Input, Pagination, Skeleton, Typography } from "@mui/material";
 import styles from "./list.module.css";
 import { Header } from '../../../components/header';
 import { routes } from "../../../routes";
@@ -24,7 +24,7 @@ export const MembersListPage: React.FC = () => {
         <Input
           type="text"
           placeholder="lemoncode"
-          value={ slug ==="lemoncode" ? "" : slug }
+          value={slug === "lemoncode" ? "" : slug}
           onChange={(e) =>
             setSlug(e.target.value == "" ? "lemoncode" : e.target.value)
           }
@@ -40,7 +40,17 @@ export const MembersListPage: React.FC = () => {
 
         {members.map((member) => (
           <React.Fragment key={member.id}>
-            <img src={member.avatar_url} />
+            {member.avatar_url
+              ?
+              <img src={member.avatar_url} />
+              :
+              <Skeleton
+                variant="rectangular"
+                width={80}
+                height={80}
+                style={{ 'padding': '0' }}
+              />
+            }
             <span>{member.id}</span>
             <Link to={`/${generatePath(routes.gitHubMemberDetail, { id: member.login })}`}>{member.login}</Link>
             <a href={member.html_url} target="_blank">{member.html_url}</a>
